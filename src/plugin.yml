@@ -1,0 +1,8 @@
+name: CustomEssentials
+version: 1.0
+Author: GamingPro
+main: org.gamingpro.customessentials
+description: CustomEssentials Plugin
+
+commands:
+  fly:
