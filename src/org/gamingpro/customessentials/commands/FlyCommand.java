@@ -1,45 +1,51 @@
 package org.gamingpro.customessentials.commands;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.Main;
 import org.bukkit.entity.Player;
-import org.gamingpro.customessentials.utils.Utils;
+import org.gamingpro.customessentials.Main;
 
 public class FlyCommand implements CommandExecutor {
 
 	private Main plugin;
 
-	public FlyCommand(Main Plugin) {
+	public FlyCommand(Main plugin) {
 		this.plugin = plugin;
-		
-		plugin.getCommand
-}
+		this.plugin.getCommand("fly").setExecutor(this);
+	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		
+		String noPermission = this.plugin.getConfig().getString("no-perm-message");
+		String flyEnabled = this.plugin.getConfig().getString("flying-enabled");
+		String flyDisabled = this.plugin.getConfig().getString("flying-disabled");
+		String consoleErrorMessage = this.plugin.getConfig().getString("console-error-message");
 
-		if (!(sender instanceof Player))
-			sender.sendMessage(Utils.chat(plugin.getConfig().getString("console_error_message")));
-		return true;
+		if (!(sender instanceof Player)) {
+			sender.sendMessage(ChatColor.translateAlternateColorCodes('&', consoleErrorMessage));
+			return true;
+		}
+		
+		Player player = (Player) sender;
 
+		if (player.hasPermission("customessentials.fly")) {
+			if (player.isFlying()) {
+				player.setFlying(false);
+				player.setAllowFlight(false);
+				player.setFallDistance(-500);
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', flyDisabled));	
+				return true;
+			} else {
+				player.setAllowFlight(true);
+				player.setFlying(true);
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', flyEnabled));
+				return true;
+			}
+			
+		}
+		player.sendMessage(ChatColor.translateAlternateColorCodes('&', noPermission));
+		return false;
 	}
-
-	Player p = (Player) sender;
-
-	if(p.hasPermission("customessentials.fly"))
-	{
-		if (p.isFlying())
-			p.setFlying(false);
-		p.setAllowFlight(false);
-		p.sendMessage(Utils.chat(plugin.getConfig().getString("FlyCommand.flying_disabled")));
-		return true;
-	}else
-	{
-		p.setFlying(true);
-		p.setAllowFlight(true);
-		p.sendMessage(Utils.chat(plugin.getConfig().getString("FlyCommand.flying_enabled")));
-	}
-}else{p.sendMessage(Utils.chat(plugin.getConfig().getString("no_perm_message")));}return false;}
-
 }
