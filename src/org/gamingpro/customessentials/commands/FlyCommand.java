@@ -33,7 +33,7 @@ public class FlyCommand implements CommandExecutor {
 		if (player.hasPermission("customessentials.fly")) {
 			if (player.isFlying() || player.getAllowFlight()) {
 				player.setFlying(false);
-				player.setAllowFlight(false);
+				player.setAllowFlight(true);
 				player.setFallDistance(-500);
 				player.sendMessage(ChatColor.translateAlternateColorCodes('&', flyDisabled));	
 				return true;
