@@ -1,0 +1,7 @@
+main: org.gamingpro.flycommand.Main
+name: FlyCommand
+version: 0.1
+author: GamingPro
+
+commands:
+   fly:

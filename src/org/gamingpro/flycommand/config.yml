@@ -1,0 +1,9 @@
+#Message sent to console when command cannot be executed by console
+console-error-message: '&8[&c*&8] &cYou are unable to execute this command!' 
+
+#No Permission Message
+no-permission-message: '&cYou do not have permission to execute this command'
+
+#Fly Commands:
+flying-enabled: '&8[&6*&8]&e&lYou &e&lHave &6&lEnabled &e&lFlying&b&l!'
+flying-disabled: '&8[&6*&8]&e&lYou &e&lHave &c&lDisabled &b&lFlying&b&l!'
