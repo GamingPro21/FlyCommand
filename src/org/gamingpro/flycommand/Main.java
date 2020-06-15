@@ -1,4 +1,4 @@
-package org.gamingpro.customessentials;
+package org.gamingpro.flycommand;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.gamingpro.flycommand.Files.DataManager;
