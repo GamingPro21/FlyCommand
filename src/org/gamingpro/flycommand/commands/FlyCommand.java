@@ -1,10 +1,5 @@
 package org.gamingpro.flycommand.commands;
 
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.gamingpro.flycommand.Main;
 
 public class FlyCommand implements CommandExecutor {
@@ -33,7 +28,7 @@ public class FlyCommand implements CommandExecutor {
 		if (player.hasPermission("flycommand.fly")) {
 			if (player.isFlying() || player.getAllowFlight()) {
 				player.setFlying(false);
-				player.setAllowFlight(true);
+				player.setAllowFlight(false);
 				player.setFallDistance(-500);
 				player.sendMessage(ChatColor.translateAlternateColorCodes('&', flyDisabled));	
 				return true;
