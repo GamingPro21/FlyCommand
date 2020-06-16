@@ -30,7 +30,7 @@ public class FlyCommand implements CommandExecutor {
 		
 		Player player = (Player) sender;
 
-		if (player.hasPermission("customessentials.fly")) {
+		if (player.hasPermission("flycommand.fly")) {
 			if (player.isFlying() || player.getAllowFlight()) {
 				player.setFlying(false);
 				player.setAllowFlight(true);
